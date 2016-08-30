@@ -1,0 +1,17 @@
+navbar {
+ margin-top: 20px;
+}
+
+.navbar-custom {
+ background-color: white;
+ border: 1px solid #337AB7;
+}
+
+.navbar-nav > li > a {
+ background-color: white;
+    color: #337AB7;
+} 
+
+.navbar-nav > li > a:hover {
+ background-color: #337AB7;
+ color: white;
