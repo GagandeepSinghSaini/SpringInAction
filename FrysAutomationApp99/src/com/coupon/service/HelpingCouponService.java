@@ -30,7 +30,7 @@ public class HelpingCouponService {
 	private final String EXPIRE_COUPON_QUERY = "UPDATE FR_PROM_DETAIL SET ENDDATE=TO_DATE(?,'YYYY-MM-DD'), DISCOUNTPERCENT=?, "
 			+ "FIXEDDISCOUNT=?, PROMOTIONCODE=?  WHERE PLULONG=? AND MPID=?";
 	private final String SELECT_FRYSCOUP = "SELECT fp.PROMO_CODE, fb.MPID FROM FRYSCOUP fp, FRYSCOBA fb WHERE fp.BATCH = ? and fb.MPID=? and fp.BATCH = fb.BATCH_NUMBER";
-	private final String UPDATE_FR_PROM_DETAIL = "UPDATE FR_PROM_DETAIL SET PROMOTIONCODE=?,STARTDATE =TO_DATE(?,'YYYY-MM-DD'),ENDDATE=TO_DATE(?,'YYYY-MM-DD'),COUPON_REQUIRED=?, DISCOUNTPERCENT=?, FIXEDDISCOUNT=? WHERE PLULONG=? AND MPID=?";
+	private final String UPDATE_FR_PROM_DETAIL = "UPDATE FR_PROM_DETAIL SET PROMOTIONCODE=?,STARTDATE =TO_DATE(?,'YYYY-MM-DD'),ENDDATE=TO_DATE(?,'YYYY-MM-DD'),COUPON_REQUIRED=?, DISCOUNTPERCENT=?, FIXEDDISCOUNT=? WHERE MPID=?";
 	private final String UDDATE_FR_PDLIST = "UPDATE FR_PDLIST SET STARTDATE =TO_DATE(?,'YYYY-MM-DD'),ENDDATE=TO_DATE(?,'YYYY-MM-DD') WHERE LONGPLU=? AND MPID=?";
 	private final String INSERT_FR_PROM_DETAIL = "INSERT INTO FR_PROM_DETAIL "
     		+ "(PLU,CLASSCODE,PROMOTIONCODE,DISCOUNTTYPE,PURCHASEDQTY,DISCOUNTPLU,DISCOUNTQTY,DISCOUNTPERCENT,"
@@ -425,8 +425,9 @@ public class HelpingCouponService {
 							stmt.setString(5, null);
 							stmt.setString(6, null);
 						}
-						stmt.setString(7, pluLong);
-						stmt.setString(8, mpId);
+						/*stmt.setString(7, pluLong);
+						stmt.setString(8, mpId);*/
+						stmt.setString(7, mpId);
 						int rowsUpdated = stmt.executeUpdate();
 						if(rowsUpdated >0) {
 							log.info(rowsUpdated + " ROWS Updated Sucessfully in FR_PROM_DETAILS:.....");
